@@ -1,0 +1,15 @@
+---
+
+- include: install-mariadb.yml
+
+- include: configure-mariadb.yml
+
+- include: restart-mariadb.yml
+
+- include: enabled-mariadb-startup.yml
+
+- include: create-database.yml
+
+- include: create-user-databse.yml
+
+

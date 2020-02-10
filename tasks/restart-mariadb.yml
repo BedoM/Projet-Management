@@ -1,0 +1,11 @@
+- hosts: BDD
+  tasks:
+  - name: Restart mariadb on config changes right away
+    service:
+      name: mysql
+      state: restarted
+  - name: 'Wait for mariadb to be started'
+    wait_for:
+      port: 3306
+      delay: 3
+      timeout: 300

@@ -1,0 +1,18 @@
+- name: Proxmox Start VMs
+  hosts: HYPERVISOR
+  remote_user: root
+  tasks:
+    - name: Power on VM1
+      proxmox_kvm:
+        vmid: 110
+        api_user: ansible@pam
+        api_password: User01001
+        api_host: 172.20.50.50
+        state: stopped
+    - name: Power on VM1
+      proxmox_kvm:
+        vmid: 111
+        api_user: ansible@pam
+        api_password: User01001
+        api_host: 172.20.50.50
+        state: stopped

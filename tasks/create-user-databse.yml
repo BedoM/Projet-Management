@@ -1,0 +1,11 @@
+- hosts: BDD
+  tasks:
+  - name: Create database user with name 'wordpress' and password 'wordpress123456789' with all database privileges
+    mysql_user:
+      name: wordpress
+      password: 'wordpress123456789'
+      login_unix_socket: /var/run/mysqld/mysqld.sock
+      priv: 'wordpress.*:ALL'
+      state: present
+      login_user: 'root'
+      login_password: 'User01001'

@@ -1,0 +1,14 @@
+- hosts: BDD
+  tasks:
+  - name: Install or update MariaDB [APT]
+    apt: 
+      name:
+        - mariadb-client
+        - mariadb-server
+        - python3-setuptools
+      update_cache: yes
+      state: latest
+  - name: Install dependency 
+    pip:  
+      name:
+        - pymysql

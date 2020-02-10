@@ -1,0 +1,6 @@
+- hosts: BDD
+  tasks:
+  - name: Enable service Mariadb(mysql), and not touch the state
+    service:
+      name: mysql
+      enabled: yes
