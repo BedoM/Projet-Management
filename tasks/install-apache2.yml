@@ -1,0 +1,9 @@
+- hosts: WEB
+  tasks:
+  - name: Install or update Apache2 [APT]
+    apt: 
+      name:
+        - apache2
+        - apache2-utils
+      update_cache: yes
+      state: latest

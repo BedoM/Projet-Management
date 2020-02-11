@@ -1,0 +1,12 @@
+- hosts: WEB
+  tasks:
+  - name: Modify listen 80 for listen 8080
+    replace:
+      path: /etc/apache2/ports.conf
+      regexp: 'Listen 80'
+      replace: 'Listen 9000'
+      backup: yes
+  - name: Restart apache2  on config changes right away
+    service:
+      name: apache2
+      state: restarted

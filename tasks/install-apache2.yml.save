@@ -1,0 +1,14 @@
+- hosts: WEB
+  tasks:
+  - name: Install or update Apache2 [APT]
+    apt: 
+      name:
+        - apache2
+        - 
+        - python3-setuptools
+      update_cache: yes
+      state: latest
+  - name: Install dependency 
+    pip:  
+      name:
+        - pymysql

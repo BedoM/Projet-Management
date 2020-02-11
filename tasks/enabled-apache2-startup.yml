@@ -1,0 +1,6 @@
+- hosts: WEB
+  tasks:
+  - name: Enable service apache2, and not touch the state
+    service:
+      name: apache2
+      enabled: yes
