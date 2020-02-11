@@ -1,0 +1,7 @@
+- hosts: WEB
+  tasks:
+  - name: unarchive wordpress
+    unarchive:
+      dest: /var/www/
+      src: /tmp/wordpress.zip
+      remote_src: yes

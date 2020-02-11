@@ -1,3 +1,4 @@
+
 - hosts: WEB
   tasks:
   - name: Modify listen 80 for listen 8080
@@ -6,6 +7,20 @@
       regexp: 'Listen 80'
       replace: 'Listen 9000'
       backup: yes
+  - name: delete folder html 
+    file: 
+      path: /var/www/html
+      state: absent
+  - name: adapt virtualhost for wordpress install
+    replace:
+      path: /etc/apache2/sites-enabled/000-default.conf
+      regexp: '80'
+      replace: '9000'
+  - name: adapt virtualhost for wordpress install
+    replace:
+      path: /etc/apache2/sites-enabled/000-default.conf
+      regexp: 'html'
+      replace: 'wordpress'
   - name: Restart apache2  on config changes right away
     service:
       name: apache2

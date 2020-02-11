@@ -5,5 +5,18 @@
       name:
         - apache2
         - apache2-utils
+        - zip
+        - unzip
+        - libapache2-mod-php7.3
+        - php7.3-mysql
+        - php7.3-gd
       update_cache: yes
       state: latest
+  - name: Enabled php7.3
+    apache2_module:
+      state: present
+      name: php7.3  
+  - name: Restart apache2  on config changes right away
+    service:
+      name: apache2
+      state: restarted

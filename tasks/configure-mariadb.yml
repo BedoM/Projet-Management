@@ -7,3 +7,7 @@
       option: bind-address
       value: 0.0.0.0
       backup: yes
+  - name: Restart mariadb on config changes right away
+    service:
+      name: mysql
+      state: restarted

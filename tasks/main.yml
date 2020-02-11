@@ -10,6 +10,16 @@
 
 - include: create-database.yml
 
-- include: create-user-databse.yml
+- include: create-user-database.yml
 
+- include: install-apache2.yml
 
+- include: enabled-apache2-startup.yml
+
+- include: configure-apache2.yml
+
+- include: wordpress-download.yml
+
+- include: wordpress-unarchive.yml
+
+- include: wordpress-config-prod.yml
