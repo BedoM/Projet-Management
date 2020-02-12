@@ -28,7 +28,6 @@ Sur la machine locale
 
 ```
 interpreter_python = /usr/bin/python3
-
 ```
 
 ### VM's
