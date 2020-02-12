@@ -1,0 +1,33 @@
+- hosts: LOADBALANCER
+  tasks:
+  - name: Copy file with owner and permissions
+    copy:
+      src: ../config_files/wordpress-loadbalancer.conf
+      dest: /etc/nginx/sites-enabled/
+      owner: root
+      group: root
+      mode: '0744'
+  - name: Adapt template for front 1
+    replace:
+      path: /etc/nginx/sites-enabled/wordpress-loadbalancer.conf
+      regexp: 'srv1.example.com'
+      replace: '{{ hostvars[groups["WEB"][0]].ansible_host }}:9000'
+  - name: Adapt template for front 2
+    replace:
+      path: /etc/nginx/sites-enabled/wordpress-loadbalancer.conf
+      regexp: 'srv2.example.com'
+      replace: '{{ hostvars[groups["WEB"][1]].ansible_host }}:9000'
+  - name: Adapt config nginx.conf
+    replace:
+      path: /etc/nginx/nginx.conf
+      regexp: 'include /etc/nginx/modules-enabled/*.conf'
+      replace: '#include /etc/nginx/modules-enabled/*.conf'
+  - name: delete fichier vhost
+    file:
+      path: /etc/nginx/sites-available/default
+      path: /etc/nginx/sites-enabled/default
+      state: absent
+  - name: Restart NGINX  on config changes right away
+    service:
+      name: nginx
+      state: restarted

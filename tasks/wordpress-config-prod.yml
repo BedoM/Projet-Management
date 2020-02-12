@@ -11,21 +11,21 @@
       path: /var/www/wordpress/wp-config-sample.php
       regexp: 'votre_utilisateur_de_bdd'
       replace: 'wordpress'
-      
+
   - name: Modify BDD PASSWORD
     replace:
       path: /var/www/wordpress/wp-config-sample.php
       regexp: 'votre_mdp_de_bdd'
       replace: 'wordpress123456789'
-      
+
   - name: Modify BDD PASSWORD
     replace:
       path: /var/www/wordpress/wp-config-sample.php
       regexp: 'localhost'
-      replace: '192.168.122.247'
+      replace: '{{ hostvars["BDD"].ansible_host }}'
 
   - name: rename file
-    copy: 
-      remote_src=True 
-      src=/var/www/wordpress/wp-config-sample.php 
+    copy:
+      remote_src=True
+      src=/var/www/wordpress/wp-config-sample.php
       dest=/var/www/wordpress/wp-config.php

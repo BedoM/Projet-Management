@@ -1,0 +1,8 @@
+- hosts: LOADBALANCER
+  tasks:
+  - name: Install or update NGINX [APT]
+    apt:
+      name:
+        - nginx
+      update_cache: yes
+      state: latest 
